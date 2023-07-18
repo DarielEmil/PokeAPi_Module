@@ -2,4 +2,4 @@
 
 Python Module using [PokeAPI](https://pokeapi.co/)
 
-> ❗ Developing
+> ❗ Under development
