@@ -5,7 +5,6 @@ __URL = "https://pokeapi.co/api/v2/berry"
 
 #TODO: Poke APi module 
 
-
 def checkStatus():
     try:
         response = get(__URL)

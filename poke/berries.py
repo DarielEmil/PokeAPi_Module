@@ -1,25 +1,25 @@
 from requests import  HTTPError, get
-from collections import OrderedDict
 
 __URL = "https://pokeapi.co/api/v2/"
 
 #TODO: Berries module
 
-#NOTE: Function to return some basic berry info
+#NOTE: Function to see basic berry info
 
-def getBerries(name:str):
+def getBerries(name:str)-> dict | HTTPError: #HACK: return dict(some basic berry info)
     try:
         response = get(f"{__URL}/berry/{name}") 
         if response.status_code == 200:
             basicJson = response.json()
-            basicInfo = {key:basicJson[key] for key in basicJson.keys() & {'name', 'size', 'growth_time', 'soil_dryness'}}
+            basicInfo:dict[str,str|int] = {key:basicJson[key] for key in basicJson.keys() & {'name', 'size', 'growth_time', 'soil_dryness'}}
             return basicInfo
     except HTTPError as e:
         return e
+    raise Exception ("Error")
 
-#NOTE: Function to see berries Flavor (return berries flavor name)
+#NOTE: Function to see berries Flavor 
 
-def viewBerryFlavor(nm:int):
+def viewBerryFlavor(nm:int)-> list | HTTPError: #HACK: return list(berries flavor name)
     try:
         if not nm in list(range(1,5)) :
             raise Exception ('Not found berry flavor')
@@ -31,5 +31,6 @@ def viewBerryFlavor(nm:int):
                 return sorted(brryName) 
     except HTTPError as e:
         return e
+    raise Exception ("Error")
 
-
+#NOTE: Function  
